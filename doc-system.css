@@ -6,12 +6,12 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('fonts/Gilroy-ExtraBold.woff') format('woff');
+  src: url('Gilroy-ExtraBold.woff') format('woff');
   font-weight: 800; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Gilroy';
-  src: url('fonts/Gilroy-Light.otf') format('opentype');
+  src: url('Gilroy-Light.otf') format('opentype');
   font-weight: 300; font-style: normal; font-display: swap;
 }
 
