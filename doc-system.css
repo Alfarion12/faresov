@@ -1,0 +1,358 @@
+/* ============================================================
+   SoulArk · Документный стиль
+   Одна структура, три скина (Редакция / House / Аналитика).
+   Всё scoped под .doc — ничего не течёт в холст.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-ExtraBold.woff') format('woff');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-Light.otf') format('opentype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+
+/* ---------- ROOT / DEFAULT TOKENS ---------- */
+.doc {
+  /* surfaces */
+  --paper:    #F7F6F3;
+  --surface:  #FFFFFF;
+  --ink:      #1A1A18;
+  --muted:    #6B6B65;
+  --hint:     #9E9E97;
+  --line:     rgba(0,0,0,0.07);
+  --line-2:   rgba(0,0,0,0.13);
+
+  /* accent (действия, акцентное слово) */
+  --accent:   #D9661F;
+  --accent-soft: #FAEEDF;
+
+  /* charts / duotone */
+  --c1: #D9661F;   /* primary */
+  --c2: #C25E7E;   /* secondary */
+  --c3: #3E8C72;   /* tertiary */
+  --c-track: rgba(0,0,0,0.06);
+
+  /* данные — отдельные ролевые токены (мягче акцента) */
+  --bar: var(--c1);            /* заливка баров */
+  --ph1: var(--c1);            /* roadmap фаза 1 */
+  --ph2: var(--c2);            /* roadmap фаза 2 */
+  --ph3: var(--c3);            /* roadmap фаза 3 */
+  --kpi-num: var(--c1);        /* числа KPI */
+
+  /* tag palette (тёплая семантика) */
+  --t-beige-bg: #F1EFE8; --t-beige-fg: #6B6B65;
+  --t-rose-bg:  #FBEAEF; --t-rose-fg:  #A33A63;
+  --t-amber-bg: #FAEEDA; --t-amber-fg: #8A5712;
+  --t-teal-bg:  #E4F1EC; --t-teal-fg:  #2F6E58;
+  --t-blue-bg:  #E9F0FA; --t-blue-fg:  #275FA6;
+  --t-accent-bg: var(--accent-soft); --t-accent-fg: var(--accent);
+
+  /* typography roles */
+  --body-font: 'IBM Plex Sans', system-ui, sans-serif;
+  --hero-font: 'IBM Plex Sans', sans-serif;
+  --hero-weight: 300;
+  --hero-tracking: -0.02em;
+  --h2-font: 'IBM Plex Sans', sans-serif;
+  --h2-weight: 400;
+  --label-font: 'IBM Plex Mono', monospace;
+
+  --radius: 10px; --radius-sm: 6px;
+
+  width: 100%;
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.doc *, .doc *::before, .doc *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.doc .page { max-width: 880px; margin: 0 auto; padding: 46px 52px 40px; }
+
+/* ---------- TOPBAR ---------- */
+.doc .topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 22px; margin-bottom: 34px;
+  border-bottom: 1px solid var(--line-2);
+}
+.doc .brand { display: flex; align-items: center; gap: 9px; }
+.doc .wordmark {
+  font-family: 'Gilroy', sans-serif; font-weight: 800; font-size: 21px;
+  letter-spacing: -0.01em; line-height: 1; white-space: nowrap;
+  background: linear-gradient(95deg, #FF8C42 0%, #E0457B 52%, #9747FF 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.doc .brand-sep { width:1px; height:13px; background: var(--line-2); }
+.doc .brand-kicker { font-family: var(--label-font); font-size: 10.5px; color: var(--muted); letter-spacing: .04em; }
+.doc .topbar-meta { font-family: var(--label-font); font-size: 10.5px; color: var(--hint); letter-spacing: .06em; text-transform: uppercase; text-align: right; }
+
+/* монохром-знак (показывается в режиме .logo-mono) */
+.doc .logo-mark { display: none; width: 17px; height: 17px; border-radius: 5px; background: var(--accent); flex: 0 0 auto; position: relative; }
+.doc .logo-mark::after { content: ""; position: absolute; inset: 5px 5px auto 5px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.85); }
+
+/* ---------- HERO ---------- */
+.doc .eyebrow {
+  font-family: var(--label-font); font-size: 11px; color: var(--muted);
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px;
+}
+.doc .hero h1 {
+  font-family: var(--hero-font); font-weight: var(--hero-weight);
+  letter-spacing: var(--hero-tracking);
+  font-size: 38px; line-height: 1.18; max-width: 17em; margin-bottom: 18px;
+  text-wrap: balance;
+}
+.doc .hero h1 .accent { color: var(--accent); }
+.doc .hero h1 strong { font-weight: 600; }
+.doc .lede { font-size: 15px; color: var(--muted); max-width: 38em; line-height: 1.7; }
+
+.doc .metarow {
+  display: flex; flex-wrap: wrap; gap: 14px 36px;
+  margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--line);
+}
+.doc .metric .mv {
+  font-family: var(--label-font); font-size: 22px; font-weight: 500;
+  color: var(--ink); letter-spacing: -0.01em;
+}
+.doc .metric .mv .u { color: var(--accent); }
+.doc .metric .ml { font-size: 11.5px; color: var(--muted); margin-top: 3px; max-width: 13em; line-height: 1.4; }
+
+/* ---------- BLOCK / SECTION ---------- */
+.doc .block { padding: 38px 0; border-top: 1px solid var(--line); }
+.doc .seclabel {
+  font-family: var(--label-font); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--hint); margin-bottom: 9px;
+}
+.doc .block h2 {
+  font-family: var(--h2-font); font-weight: var(--h2-weight);
+  font-size: 23px; letter-spacing: -0.01em; line-height: 1.25; margin-bottom: 6px;
+}
+.doc .block .sub { font-size: 13.5px; color: var(--muted); margin-bottom: 24px; max-width: 40em; }
+
+/* ---------- CARDS ---------- */
+.doc .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.doc .card {
+  background: var(--surface); border: 1px solid var(--line-2);
+  border-radius: var(--radius); padding: 20px 22px;
+}
+.doc .card h3 { font-size: 14.5px; font-weight: 600; margin-bottom: 7px; letter-spacing: -0.005em; }
+.doc .card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.doc .card .klabel {
+  font-size: 10px; text-transform: uppercase; letter-spacing: .08em;
+  font-weight: 600; margin-bottom: 11px;
+}
+
+/* ---------- TAGS ---------- */
+.doc .tag {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 999px; margin-top: 13px; line-height: 1.5;
+}
+.doc .tag-beige  { background: var(--t-beige-bg);  color: var(--t-beige-fg); }
+.doc .tag-rose   { background: var(--t-rose-bg);   color: var(--t-rose-fg); }
+.doc .tag-amber  { background: var(--t-amber-bg);  color: var(--t-amber-fg); }
+.doc .tag-teal   { background: var(--t-teal-bg);   color: var(--t-teal-fg); }
+.doc .tag-blue   { background: var(--t-blue-bg);   color: var(--t-blue-fg); }
+.doc .tag-accent { background: var(--t-accent-bg); color: var(--t-accent-fg); }
+
+/* ---------- CALLOUT ---------- */
+.doc .callout {
+  margin-top: 14px; padding: 16px 20px; border-radius: var(--radius);
+  background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.doc .callout p { font-size: 13px; line-height: 1.6; color: color-mix(in srgb, var(--accent) 78%, var(--ink)); }
+.doc .callout strong { font-weight: 600; }
+
+/* ---------- CHART (горизонтальные бары) ---------- */
+.doc .chart {
+  background: var(--surface); border: 1px solid var(--line-2);
+  border-radius: var(--radius); padding: 22px 24px;
+}
+.doc .chart-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom: 18px; }
+.doc .chart-title { font-size: 13.5px; font-weight: 600; }
+.doc .chart-legend { display:flex; gap: 14px; }
+.doc .leg { display:flex; align-items:center; gap:6px; font-size:11px; color: var(--muted); }
+.doc .leg .sw { width:9px; height:9px; border-radius:2px; }
+.doc .bars { display:flex; flex-direction:column; gap: 13px; }
+.doc .bar-row { display:grid; grid-template-columns: 122px 1fr 56px; align-items:center; gap: 14px; }
+.doc .bar-name { font-size: 12.5px; color: var(--ink); }
+.doc .bar-track { position:relative; height: 9px; border-radius: 999px; background: var(--c-track); overflow:hidden; }
+.doc .bar-fill { position:absolute; inset:0 auto 0 0; border-radius: 999px; }
+.doc .bar-fill.prev { background: var(--c-track); }
+.doc .bar-val { font-family: var(--label-font); font-size: 12px; font-weight:500; text-align:right; }
+.doc .bar-val .delta { color: var(--c3); font-size: 10.5px; }
+.doc .axis { display:flex; justify-content:space-between; margin-top: 14px; padding-top:10px; border-top:1px solid var(--line); }
+.doc .axis span { font-family: var(--label-font); font-size: 9.5px; color: var(--hint); }
+
+/* ---------- ROADMAP ---------- */
+.doc .tl { display:flex; gap: 3px; height: 6px; border-radius: 3px; overflow:hidden; margin-bottom: 10px; }
+.doc .tl-s { border-radius: 3px; }
+.doc .tl-labels { display:flex; justify-content:space-between; font-family: var(--label-font); font-size: 10px; color: var(--hint); margin-bottom: 18px; letter-spacing: .04em; }
+.doc .phases { display:grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.doc .phase {
+  background: var(--surface); border: 1px solid var(--line-2);
+  border-radius: var(--radius); padding: 16px 18px;
+}
+.doc .phase-top { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.doc .phase-dot { width:9px; height:9px; border-radius:50%; flex:0 0 auto; }
+.doc .phase-time { font-family: var(--label-font); font-size:10px; color: var(--hint); margin-left:auto; }
+.doc .phase h4 { font-size: 13px; font-weight: 600; line-height:1.3; }
+.doc .phase ul { list-style:none; margin-top: 10px; display:flex; flex-direction:column; gap:6px; }
+.doc .phase li { font-size: 12px; color: var(--muted); line-height:1.45; padding-left: 13px; position:relative; }
+.doc .phase li::before { content:""; position:absolute; left:0; top:7px; width:4px; height:4px; border-radius:50%; background: currentColor; opacity:.5; }
+
+/* ---------- KPI STRIP ---------- */
+.doc .kpis { display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.doc .kpi { background: var(--surface); border:1px solid var(--line-2); border-radius: var(--radius); padding: 16px 18px; }
+.doc .kpi .kv { font-family: var(--label-font); font-size: 19px; font-weight:500; letter-spacing:-0.01em; }
+.doc .kpi .kl { font-size: 11px; color: var(--muted); margin-top:4px; line-height:1.4; }
+
+/* ---------- TABLE ---------- */
+.doc .tbl-wrap { background: var(--surface); border:1px solid var(--line-2); border-radius: var(--radius); overflow:hidden; }
+.doc table.ctable { width:100%; border-collapse: collapse; font-size: 12.5px; }
+.doc .ctable th {
+  text-align:left; padding: 11px 16px; font-family: var(--label-font);
+  font-size: 9.5px; font-weight:500; text-transform: uppercase; letter-spacing:.08em;
+  color: var(--hint); border-bottom: 1px solid var(--line-2); background: color-mix(in srgb, var(--paper) 55%, var(--surface));
+}
+.doc .ctable td { padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; color: var(--muted); }
+.doc .ctable tr:last-child td { border-bottom: none; }
+.doc .ctable td:first-child { color: var(--ink); font-weight: 500; }
+.doc .ctable .yes { color: var(--c3); font-weight:600; }
+.doc .ctable .no { color: var(--hint); }
+.doc .ctable .hl td { background: var(--accent-soft); }
+.doc .ctable .hl td:first-child { color: var(--accent); }
+.doc .ctable .star { color: var(--accent); font-weight:700; }
+
+/* ---------- FOOTER ---------- */
+.doc .docfoot {
+  margin-top: 8px; padding-top: 22px; border-top: 1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between;
+  font-family: var(--label-font); font-size: 10.5px; color: var(--hint); letter-spacing:.04em;
+}
+
+/* ============================================================
+   СКИН A — РЕДАКЦИЯ (по умолчанию уже почти он)
+   IBM Plex, лёгкий заголовок, тёплый мульти, лёгкий бренд
+   ============================================================ */
+.doc.skin-editorial {
+  /* фон — как в доке SoulArk × Atmaguru (#F7F6F3) — уже совпадает */
+  --accent: #FF8C42;                 /* брендовый оранжевый, точечно */
+  --accent-soft: #FBEEDF;
+
+  /* палитра данных — «живые» оттенки Atmaguru, сбалансированы (ни один не доминирует) */
+  --bar: #54BE90;                    /* бары: свежий зелёный (рост) */
+  --ph1: #AD93DF;                    /* roadmap: лавандово-фиолетовый */
+  --ph2: #54BE90;                    /* roadmap: свежий зелёный */
+  --ph3: #EEA13E;                    /* roadmap: тёплый оранжевый */
+  --kpi-num: #7B51C3;                /* числа KPI: насыщенный фиолет */
+  --c3: #2C8A6E;                     /* дельта-стрелки ↑ — глубокий зелёный */
+  /* теги чуть живее */
+  --t-teal-bg:#E2F2EB; --t-teal-fg:#2E8C6F;
+  --c3: #4F9E78;                     /* дельта-стрелки ↑ в чарте */
+}
+/* тёплый 2-стоп wordmark (без фиолетового — деловее) */
+.doc.skin-editorial .wordmark {
+  background: linear-gradient(95deg, #FF8C42 0%, #E0457B 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+/* +12% и пр. — без оранжевого в единицах */
+.doc.skin-editorial .metric .mv .u { color: var(--muted); }
+/* callout: тёплый фон (как в B), текст — тёмно-коричневый (баланс) */
+.doc.skin-editorial .callout { border-color: color-mix(in srgb, var(--accent) 22%, transparent); }
+.doc.skin-editorial .callout p { color: #5A3E22; }
+.doc.skin-editorial .callout strong { color: #3D2912; }
+
+/* ============================================================
+   СКИН B — SOULARK HOUSE
+   Gilroy ExtraBold, оранжевый ведущий + навы-чернила, премиально-тепло
+   ============================================================ */
+.doc.skin-house {
+  --paper:   #F8F5F0;
+  --surface: #FFFFFF;
+  --ink:     #14233B;
+  --muted:   #5C6675;
+  --hint:    #97A0AD;
+  --line:    rgba(20,35,59,0.08);
+  --line-2:  rgba(20,35,59,0.14);
+
+  --accent:  #F2741C;
+  --accent-soft: #FBEEDF;
+
+  --c1: #F2741C; --c2: #14233B; --c3: #2E9E6B;
+  --c-track: rgba(20,35,59,0.07);
+
+  --t-beige-bg:#F1ECE3; --t-beige-fg:#6B6255;
+  --t-rose-bg:#FBE7E2;  --t-rose-fg:#B2543A;
+  --t-amber-bg:#FBEED7; --t-amber-fg:#8A5712;
+  --t-teal-bg:#E4F1E9;  --t-teal-fg:#256B49;
+  --t-blue-bg:#E8EEF6;  --t-blue-fg:#1E3B5C;
+
+  --hero-font: 'Gilroy', sans-serif; --hero-weight: 800; --hero-tracking: -0.015em;
+  --h2-font: 'Gilroy', sans-serif; --h2-weight: 800;
+}
+.doc.skin-house .hero h1 { font-size: 40px; line-height: 1.12; }
+.doc.skin-house .block h2 { font-size: 24px; }
+.doc.skin-house .hero h1 strong { font-weight: 800; }
+
+/* ============================================================
+   СКИН C — АНАЛИТИКА
+   Гибрид (Gilroy hero + Plex h2), синий+оранж duotone, технологично-чётко
+   ============================================================ */
+.doc.skin-analytical {
+  --paper:   #FAFAF8;
+  --surface: #FFFFFF;
+  --ink:     #14181F;
+  --muted:   #5E6571;
+  --hint:    #9AA0AA;
+  --line:    rgba(20,24,31,0.07);
+  --line-2:  rgba(20,24,31,0.12);
+
+  --accent:  #E0712A;
+  --accent-soft: #FBEFE3;
+
+  --c1: #2A6FDB; --c2: #E0712A; --c3: #4F9D6B;
+  --c-track: rgba(20,24,31,0.06);
+
+  --t-beige-bg:#EFEFEC; --t-beige-fg:#646A74;
+  --t-rose-bg:#FBE9EE;  --t-rose-fg:#A33A63;
+  --t-amber-bg:#FAEEDA; --t-amber-fg:#8A5712;
+  --t-teal-bg:#E3F0EB;  --t-teal-fg:#2F6E58;
+  --t-blue-bg:#E7EFFB;  --t-blue-fg:#1F5BB5;
+
+  --hero-font: 'Gilroy', sans-serif; --hero-weight: 800; --hero-tracking: -0.015em;
+  --h2-font: 'IBM Plex Sans', sans-serif; --h2-weight: 500;
+}
+.doc.skin-analytical .hero h1 { font-size: 39px; line-height: 1.14; }
+/* в аналитике mono-лейблы чуть заметнее */
+.doc.skin-analytical .seclabel { color: var(--accent); opacity: .85; }
+.doc.skin-analytical .ctable th { letter-spacing: .1em; }
+
+/* ============================================================
+   МОДИФИКАТОРЫ ДЛЯ TWEAKS (накладываются поверх скина)
+   ============================================================ */
+
+/* — Фон: вариант B (чуть теплее) — */
+.doc.paper-b { --paper: #F8F5F0; }
+
+/* — Заголовки на Gilroy (вместо лёгкого IBM Plex) — */
+.doc.head-gilroy {
+  --hero-font: 'Gilroy', sans-serif; --hero-weight: 800; --hero-tracking: -0.015em;
+  --h2-font: 'Gilroy', sans-serif; --h2-weight: 800;
+}
+.doc.head-gilroy .hero h1 { font-size: 40px; line-height: 1.13; }
+.doc.head-gilroy .block h2 { font-size: 24px; }
+.doc.head-gilroy .hero h1 strong { font-weight: 800; }
+
+/* — Логотип: монохром (знак + чернильный текст) вместо градиента — */
+.doc.logo-mono .logo-mark { display: block; }
+.doc.logo-mono .wordmark {
+  background: none !important; -webkit-background-clip: border-box; background-clip: border-box;
+  -webkit-text-fill-color: var(--ink); color: var(--ink);
+}
