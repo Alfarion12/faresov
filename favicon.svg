@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#FF8C42"></rect>
+  <text x="32" y="32" font-family="&#39;Gilroy&#39;,&#39;Segoe UI&#39;,sans-serif" font-weight="800" font-size="33" fill="#fff" text-anchor="middle" dominant-baseline="central" letter-spacing="-1">АФ</text>
+  <text x="54.5" y="11" font-family="&#39;Segoe UI&#39;,Arial,sans-serif" font-size="12" fill="#fff" text-anchor="middle" dominant-baseline="central">★</text>
+</svg>
