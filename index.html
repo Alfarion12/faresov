@@ -85,7 +85,11 @@
     letter-spacing: .04em; color: var(--muted); display: flex; align-items: center; gap: 7px;
     justify-content: flex-end;
   }
-  .doc .availability .live { width: 7px; height: 7px; border-radius: 50%; background: #4F9E78; box-shadow: 0 0 0 3px color-mix(in srgb, #4F9E78 18%, transparent); }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 2px color-mix(in srgb, #4F9E78 22%, transparent); }
+    50%       { box-shadow: 0 0 0 5px color-mix(in srgb, #4F9E78 0%,  transparent); }
+  }
+  .doc .availability .live { width: 7px; height: 7px; border-radius: 50%; background: #4F9E78; box-shadow: 0 0 0 2px color-mix(in srgb, #4F9E78 22%, transparent); animation: pulse-dot 2s ease-in-out infinite; }
 
   /* ============ ВКЛАДКИ ============ */
   .doc .tabbar {
@@ -390,7 +394,7 @@
         <div class="works">
           <figure class="work">
             <div class="frame">
-              <div class="frame-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="frame-url">app.soulark.ru</span></div>
+              <div class="frame-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
               <div class="frame-screen"><img src="work-soulark.jpg" alt="Дашборд руководителя SoulArk AI" loading="lazy"></div>
             </div>
             <figcaption>
@@ -400,17 +404,17 @@
           </figure>
           <figure class="work">
             <div class="frame">
-              <div class="frame-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="frame-url">t.me · Руна Дня</span></div>
+              <div class="frame-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
               <div class="frame-screen"><img src="work-runolog.jpg" alt="AI-чатбот «Руна Дня» для рунолога" loading="lazy"></div>
             </div>
             <figcaption>
               <div class="work-name">AI-чатбот для эксперта</div>
-              <p>Бот «Руна Дня» с персональными разборами: конкретика, которая повышает доверие и продажи. Собран целиком на AI.</p>
+              <p>Бот «Руна Дня» с персональными разборами: конкретика, которая повышает доверие и продажи.</p>
             </figcaption>
           </figure>
           <figure class="work">
             <div class="frame">
-              <div class="frame-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="frame-url">dom-velesa.ru</span></div>
+              <div class="frame-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
               <div class="frame-screen"><img src="work-veles.jpg" alt="Интернет-магазин «Дом Велеса»" loading="lazy"></div>
             </div>
             <figcaption>
@@ -456,7 +460,7 @@
           <div class="card">
             <div class="klabel" style="color:var(--t-amber-fg)">Чутьё</div>
             <h3>Вижу то, чего нет в таблицах</h3>
-            <p>Чувствую людей, продукт и рынок — для меня это не «мягкий навык», а рабочий инструмент. Им я нахожу то, что не видно в отчётах.</p>
+            <p>Чувствую людей, продукт и рынок — для меня это не просто «мягкий навык», а рабочий инструмент. Им я вижу то, что не видно в отчётах.</p>
           </div>
         </div>
       </div>
