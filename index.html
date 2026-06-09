@@ -220,6 +220,34 @@
   .doc .work-name { font-size: 14px; font-weight: 600; letter-spacing: -0.005em; margin-bottom: 5px; }
   .doc .work figcaption p { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
 
+  /* ============ ГАЙД (щедрость) ============ */
+  .doc .guide-lead { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 46em; margin-bottom: 16px; }
+  .doc .guide-lead em { font-style: normal; color: var(--ink); font-weight: 500; }
+  .doc .guide {
+    display: grid; grid-template-columns: 188px 1fr; gap: 28px; align-items: center;
+    background: var(--surface); border: 1px solid var(--line-2);
+    border-radius: var(--radius); padding: 26px 28px;
+  }
+  .doc .guide-cover {
+    aspect-ratio: 3 / 4; border-radius: 8px; overflow: hidden; position: relative;
+    background: radial-gradient(ellipse at 18% 14%, #234A72 0%, #15304E 42%, #0B1E33 88%);
+    box-shadow: 0 10px 26px -10px rgba(11,30,51,.5); color: #fff;
+    display: flex; flex-direction: column; padding: 18px 16px;
+    transform: rotate(-1.5deg); transition: transform 240ms ease; text-decoration: none;
+  }
+  .doc .guide:hover .guide-cover { transform: rotate(0deg) translateY(-2px); }
+  .doc .guide-cover::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); }
+  .doc .gc-kicker { font-family: var(--label-font); font-size: 7.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: auto; }
+  .doc .gc-title { font-family: var(--hero-font); font-weight: 800; font-size: 15px; line-height: 1.18; letter-spacing: -0.01em; margin-bottom: 9px; }
+  .doc .gc-title .am { color: var(--accent); }
+  .doc .gc-rule { width: 26px; height: 2px; background: rgba(255,140,66,.7); margin-bottom: 9px; }
+  .doc .gc-meta { font-family: var(--label-font); font-size: 7.5px; letter-spacing: .04em; color: rgba(229,233,240,.6); line-height: 1.5; }
+  .doc .guide-body .eyebrow { margin-bottom: 9px; }
+  .doc .guide-body h3 { font-family: var(--h2-font); font-weight: var(--h2-weight); font-size: 23px; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 9px; }
+  .doc .guide-body p { font-size: 13.5px; color: var(--muted); line-height: 1.6; max-width: 40em; margin-bottom: 16px; }
+  .doc .guide-dl { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .doc .guide-micro { font-size: 11.5px; color: var(--hint); }
+
   /* ============ АДАПТИВ ============ */
   @media (max-width: 720px) {
     .doc .page { padding: 28px 22px 32px; }
@@ -237,6 +265,8 @@
     .doc .jstep .jtime { padding-top: 0; }
     .doc .cta { grid-template-columns: 1fr; padding: 26px 22px; }
     .doc .phases { grid-template-columns: 1fr; }
+    .doc .guide { grid-template-columns: 1fr; gap: 22px; }
+    .doc .guide-cover { width: 150px; transform: rotate(-1.5deg); }
   }
 </style>
 </head>
@@ -503,6 +533,32 @@
             <div>
               <h4>Создатель AI-продуктов</h4>
               <p>Продуктовые концепции, брендинг и лендинги средствами AI. Сооснователь SoulArk AI — позиционирование и go-to-market с нуля.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Гайд (щедрость) -->
+      <div class="block">
+        <div class="seclabel">04 / Полезное — бесплатно</div>
+        <p class="guide-lead">Моё кредо в работе — <em>«сначала люди, потом инструмент»</em>. Вот как это выглядит на практике:</p>
+        <div class="guide">
+          <a class="guide-cover" href="assets/Гайд_внедрение_AI_Фаресов.pdf" download aria-label="Скачать гайд в PDF">
+            <div class="gc-kicker">Практический гайд</div>
+            <div class="gc-title">Как внедрять <span class="am">AI</span> и изменения в команду без сопротивления</div>
+            <div class="gc-rule"></div>
+            <div class="gc-meta">7-дневный план · скрипты · шаблоны<br>Александр Фаресов</div>
+          </a>
+          <div class="guide-body">
+            <div class="eyebrow">Гайд · PDF</div>
+            <h3>Возьмите с собой</h3>
+            <p>Практический гайд: как внедрять AI и изменения в команду без сопротивления. 7-дневный план, скрипты разговоров, 5 типичных ошибок руководителя, шаблон отчёта собственнику — на проверенных методологиях (Коттер, ADKAR).</p>
+            <div class="guide-dl">
+              <a class="btn btn-primary" href="assets/Гайд_внедрение_AI_Фаресов.pdf" download>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Скачать PDF
+              </a>
+              <span class="guide-micro">Забирайте, пригодится.</span>
             </div>
           </div>
         </div>
