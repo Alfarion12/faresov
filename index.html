@@ -6,6 +6,9 @@
 <title>Александр Фаресов · Директор по маркетингу</title>
 <meta name="description" content="Александр Фаресов — директор по маркетингу. Беру маркетинг на себя. Управляю им от стратегии до продаж и сам запускаю ключевые изменения.">
 <link rel="canonical" href="https://faresov.ru/">
+<link rel="alternate" hreflang="ru" href="https://faresov.ru/">
+<link rel="alternate" hreflang="en" href="https://faresov.ru/en/">
+<link rel="alternate" hreflang="x-default" href="https://faresov.ru/">
 
 <!-- Open Graph / социальные сети -->
 <meta property="og:type" content="profile">
@@ -467,6 +470,29 @@
 .doc .brand-sep { width:1px; height:13px; background: var(--line-2); }
 .doc .brand-kicker { font-family: var(--label-font); font-size: 10.5px; color: var(--muted); letter-spacing: .04em; }
 .doc .topbar-meta { font-family: var(--label-font); font-size: 10.5px; color: var(--hint); letter-spacing: .06em; text-transform: uppercase; text-align: right; }
+.doc .topbar-right { display: flex; flex: none; align-items: center; gap: 20px; }
+.doc .topbar-right .topbar-meta { white-space: nowrap; }
+.doc .language-switch {
+  display: flex; align-items: center; gap: 5px;
+  color: var(--muted); font: 400 13px/20px var(--label-font); white-space: nowrap;
+}
+.doc .language-switch > a,
+.doc .language-switch > [aria-current="page"] {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 24px; min-height: 24px; color: inherit; text-decoration: none;
+}
+.doc .language-switch > [aria-current="page"] { color: var(--ink); font-weight: 500; }
+.doc .language-switch > a:hover { color: var(--ink); }
+.doc .language-switch > a:focus-visible { outline: 2px solid var(--muted); outline-offset: 2px; }
+.doc .language-switch .language-divider { opacity: .6; }
+@media (max-width: 720px) {
+  .doc .topbar { gap: 12px; }
+  .doc .topbar .brand { flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
+  .doc .topbar .brand-sep { display: none; }
+  .doc .topbar .wordmark { white-space: normal; }
+  .doc .topbar .brand-kicker { line-height: 1.3; }
+  .doc .topbar-right { flex-direction: column-reverse; align-items: flex-end; gap: 4px; }
+}
 
 /* монохром-знак (показывается в режиме .logo-mono) */
 .doc .logo-mark { display: none; width: 17px; height: 17px; border-radius: 5px; background: var(--accent); flex: 0 0 auto; position: relative; }
@@ -1106,7 +1132,10 @@
         <span class="brand-sep"></span>
         <span class="brand-kicker">личная визитка</span>
       </div>
-      <div class="topbar-meta">Москва · 2026</div>
+      <div class="topbar-right">
+          <div class="topbar-meta">Москва · 2026</div>
+          <nav class="language-switch" aria-label="Язык сайта"><span lang="ru" aria-current="page" aria-label="Русский">RU</span><span class="language-divider" aria-hidden="true">/</span><a href="/en/" lang="en" hreflang="en" aria-label="English">EN</a></nav>
+        </div>
     </div>
 
     <!-- ПОСТОЯННАЯ ШАПКА -->
